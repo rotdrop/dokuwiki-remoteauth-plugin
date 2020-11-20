@@ -1,0 +1,7 @@
+base   remoteauth
+author Claus-Justus Heine
+email  himself@claus-justus-heine.de
+date   2020-11-20
+name   Remote API Extensions
+desc   Extend the remote API by some methods, in particular sticky logins.
+url    https://claus-justus-heine.de
