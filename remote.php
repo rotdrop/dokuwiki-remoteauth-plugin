@@ -20,7 +20,7 @@ class RemoteAuth extends DokuWiki_Remote_Plugin
      * @param string $pass
      * @return int
      */
-    public function stickyLogin(string $user, string $pass) {
+    public function stickyLogin(string $user, string $pass)
     {
         global $conf;
         /** @var \dokuwiki\Extension\AuthPlugin $auth */
