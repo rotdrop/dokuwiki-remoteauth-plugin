@@ -1,5 +1,6 @@
-<?php 
-class RemoteAuth extends DokuWiki_Remote_Plugin
+<?php
+
+class remote_plugin_remoteauth extends DokuWiki_Remote_Plugin
 {
     public function _getMethods()
     {
@@ -14,7 +15,7 @@ class RemoteAuth extends DokuWiki_Remote_Plugin
     }
     
     /**
-     * stringLogin
+     * stickyLogin
      *
      * @param string $user
      * @param string $pass
