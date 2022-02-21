@@ -1,5 +1,7 @@
 <?php
 
+use dokuwiki\Extension\Event;
+
 class remote_plugin_remoteauth extends DokuWiki_Remote_Plugin
 {
     public function _getMethods()
@@ -13,7 +15,7 @@ class remote_plugin_remoteauth extends DokuWiki_Remote_Plugin
             ]
         ];
     }
-    
+
     /**
      * stickyLogin
      *
@@ -33,13 +35,13 @@ class remote_plugin_remoteauth extends DokuWiki_Remote_Plugin
         @session_start(); // reopen session for login
         $ok = null;
         if ($auth->canDo('external')) {
-            $ok = $auth->trustExternal($user, $pass, false);
+            $ok = $auth->trustExternal($user, $pass, true);
         }
         if ($ok === null){
             $evdata = array(
                 'user' => $user,
                 'password' => $pass,
-                'sticky' => false,
+                'sticky' => true,
                 'silent' => true,
             );
             $ok = Event::createAndTrigger('AUTH_LOGIN_CHECK', $evdata, 'auth_login_wrapper');
@@ -49,4 +51,3 @@ class remote_plugin_remoteauth extends DokuWiki_Remote_Plugin
         return $ok;
     }
 }
-
