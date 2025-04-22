@@ -1,19 +1,18 @@
 <?php
 
 use dokuwiki\Extension\Event;
+use dokuwiki\Remote\ApiCall;
+use dokuwiki\Extension\RemotePlugin;
 
-class remote_plugin_remoteauth extends DokuWiki_Remote_Plugin
+class remote_plugin_remoteauth extends RemotePlugin
 {
-    public function _getMethods()
+    public function getMethods()
     {
-        return [
-            'stickyLogin' => [
-                'args' => [ 'string', 'string' ],
-                'return' => 'int',
-                'public' => 1,
-                'doc' => 'Tries to perform a sticky login with the given credentials and sets auth cookies.',
-            ]
-        ];
+        $methods = parent::getMethods();
+        foreach ($methods as $method) {
+            $method->setPublic();
+        }
+        return $methods;
     }
 
     /**
